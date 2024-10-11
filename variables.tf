@@ -58,11 +58,6 @@ variable "metadata" {
   default     = {}
 }
 
-variable "waypoint_additional_details" {
-  type        = string
-  description = "Waypoint additional details added to Nomad metadata"
-}
-
 variable "environment_variables" {
   type        = map(string)
   description = "Environment variables for application"

@@ -1,12 +1,13 @@
 locals {
+
   environment_variables = contains(keys(var.applications), var.waypoint_application) ? merge({
     NAME    = var.waypoint_application
     MESSAGE = var.applications[var.waypoint_application].nomad_clues
   }, var.environment_variables) : var.environment_variables
 
-  metadata = var.waypoint_additional_details != null ? merge({
+  metadata = contains(keys(var.applications), var.waypoint_application) ? merge({
     "waypoint.provisioned"        = "true"
-    "waypoint.additional_details" = "${var.waypoint_additional_details}"
+    "waypoint.additional_details" = var.applications[var.waypoint_application].waypoint_clues
   }, var.metadata) : var.metadata
 }
 

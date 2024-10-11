@@ -3,5 +3,6 @@ output "job_id" {
 }
 
 output "clue" {
-  value = var.waypoint_additional_details
+  value     = var.applications[var.waypoint_application].waypoint_clues
+  sensitive = true
 }
